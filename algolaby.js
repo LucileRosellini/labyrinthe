@@ -28,11 +28,11 @@ function Draw() {
         cell.innerHTML = cell.id;
 
 
-          if (cellule.posX === 0 && cellule.posY === 0){
+        if (cellule.posX === 0 && cellule.posY === 0) {
             cell.style.background = 'orange'
         }
 
-        if (cellule.posX==xMax && cellule.posY==yMax){
+        if (cellule.posX == xMax && cellule.posY == yMax) {
             cell.style.background = 'green'
         }
 
@@ -50,7 +50,7 @@ function Draw() {
 
         if (gauche) {
             cell.style.borderLeft = 'solid red'
-           
+
         }
         //cell.style.backgroundColor ='yellow';
 
@@ -67,15 +67,77 @@ function Draw() {
 
 Draw();
 
-/*function DFS(){
-let S =new Array (labyrinthe.length); //represente le tableau de stack
-let s = (cellule.posX === 0 && cellule.posY === 0); //represente l'entrée du labyrinthe.
-let G = labyrinthe; //represente les datas du labyrinthe.
+
+/*DFS-iterative (G, s):                                   
+→ let S be a stack
+→ insert s in the stack
+→ mark s as visited.
+
+while ( S is not empty):
+    → Pop an element “v” from stack to visit next
+    → if “v” is the exit : return
+    for all neighbours w of v in Graph G:
+         if w is not visited :
+              → insert w in the stack         
+              → mark w as visited
+→ return False
+-----------------------------------------------------------
+Explication des différentes variables : 
+G → votre labyrinthe
+s → entrée du labyrinthe
+Stack → voir ressources*/
+
+function DFS(G, s) {
+    //let s = (cellule.posX === 0 && cellule.posY === 0); //represente l'entrée du labyrinthe.
+    
+    //let G = labyrinthe; //represente les datas du labyrinthe.
+    //let s = labyrinthe[0];// L'objet json dans lequel on trouve les element du premier array
+    let S = [];//represente les positions visitée.
+    
+    
+    S.push(s);
+    // ajouter une paire clef:valeur => "visited":true,
+
+    s["visited"]=true;
+
+    
+    //let w = true; //represente l'etat de visite. Si c'est non visité = true.
+
+    while (S.length != 0) {
+        const v = S.pop();
+        if(v[posX]==Xmax && v[posY]==Ymax){ // v est la sortie
+            return;
+        }
+        {
+
+        }
+
+       
 
 
+        /*if (v == (xMax && yMax)) {
+            //return for all neighbours w of v in Graph G:
+            if (w == true) {
+                const w = S.push();
+                w = false;
+            }
+            //return False
+        }*/
 
-}*/
 
+    }
+
+}
+
+function trouverVoisins(s) {
+    let voisins = [];
+
+    if (! s.walls[0] && s.posY > 0 ) {
+        voisins.push()
+    }
+
+
+}
 
 
 //<div class="case" id="magic">case vide</div>
